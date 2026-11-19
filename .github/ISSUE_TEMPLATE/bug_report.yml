@@ -1,0 +1,60 @@
+name: Bug report / Ошибка
+description: Something does not work in Survival Categories Update / Что-то не работает в Survival Categories Update
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report! You can write in English or Russian.
+        Спасибо за сообщение! Можно писать по-английски или по-русски.
+  - type: input
+    id: game-version
+    attributes:
+      label: Game version / Версия игры
+      placeholder: "1.22.7"
+    validations:
+      required: true
+  - type: input
+    id: mod-version
+    attributes:
+      label: Mod version / Версия мода
+      placeholder: "1.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: side
+    attributes:
+      label: Where / Где
+      options:
+        - Singleplayer / Одиночная игра
+        - Multiplayer server / Сервер
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened / Что случилось
+      description: What you expected and what happened instead. Screenshots are welcome. / Что ожидали и что получилось. Скриншоты приветствуются.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Как повторить
+      placeholder: |
+        1. Open the handbook / Открыть справочник
+        2. ...
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods / Другие моды
+      description: List of other installed mods with versions. / Список остальных модов с версиями.
+  - type: textarea
+    id: log
+    attributes:
+      label: Client log / Лог клиента
+      description: |
+        Attach or paste `client-main.log` (and `client-crash.log` if the game crashed).
+        Приложите или вставьте `client-main.log` (и `client-crash.log`, если игра вылетела).
+        Windows: `%APPDATA%\VintagestoryData\Logs\`, Linux: `~/.config/VintagestoryData/Logs/`
+      render: text
