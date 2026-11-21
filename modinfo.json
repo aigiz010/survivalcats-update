@@ -1,0 +1,13 @@
+{
+  "type": "code",
+  "modid": "survivalcatsupdate",
+  "name": "Survival Categories Update",
+  "authors": [
+    "ZigTheHedge"
+  ],
+  "description": "Creative inventory tabs, page preview and bookmarks in the survival handbook.\nВкладки творческого инвентаря, предпросмотр страниц и закладки в справочнике выживания.",
+  "version": "1.1.1",
+  "dependencies": {
+    "game": "1.18.8"
+  }
+}

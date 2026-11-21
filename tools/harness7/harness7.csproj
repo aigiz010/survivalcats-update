@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net7.0</TargetFramework><Nullable>disable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences><UseAppHost>false</UseAppHost>
+    <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles><GenerateDependencyFile>false</GenerateDependencyFile>
+    <NetRuntimeDir>C:\Program Files\dotnet\shared\Microsoft.NETCore.App\7.0.10</NetRuntimeDir>
+    <NoWarn>$(NoWarn);CS1701;CS1702</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(NetRuntimeDir)\System.*.dll;$(NetRuntimeDir)\netstandard.dll;$(NetRuntimeDir)\mscorlib.dll" Exclude="$(NetRuntimeDir)\System.Private.*.dll;$(NetRuntimeDir)\System.IO.Compression.Native.dll" Private="false" />
+    <Reference Include="$(NetRuntimeDir)\System.Private.CoreLib.dll" Private="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- runtimeconfig свой: генерация выключена (DisableImplicitFrameworkReferences), rollForward Major — запуск на 7/8/10 через dotnet exec с ключом fx-version -->
+    <None Include="harness7.runtimeconfig.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

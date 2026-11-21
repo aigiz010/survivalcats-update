@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Один архив на игру 1.18.8 … 1.22.x (1.18.0–1.18.7 — ещё .NET Framework 4, не поддерживаются).
+       Игра работает на .NET 7 (1.18.8–1.20), 1.21 — на .NET 8,
+       1.22 — на .NET 10, поэтому мод собирается под .NET 7 и против API самой старой версии (gamerefs\1.18.8):
+       всё, чего в 1.18.8 нет, компилятор не пропустит, а новые классы берутся через отражение.
+       Сборки рантайма .NET 7 подключаются напрямую (DisableImplicitFrameworkReferences), пакет net7.0 не нужен.
+       Проверка против другой версии: dotnet build -p:GameDir=gamerefs\1.21.6 (или gamerefs\1.22.7). -->
+  <PropertyGroup>
+    <AssemblyName>survivalcats_update</AssemblyName>
+    <RootNamespace>survivalcats</RootNamespace>
+    <TargetFramework>net7.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Version>1.1.1</Version>
+    <GameDir Condition="'$(GameDir)' == ''">$(MSBuildProjectDirectory)\gamerefs\1.18.8</GameDir>
+    <NetRuntimeDir Condition="'$(NetRuntimeDir)' == ''">C:\Program Files\dotnet\shared\Microsoft.NETCore.App\7.0.10</NetRuntimeDir>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <NoWarn>$(NoWarn);CS1701;CS1702;CS0649</NoWarn>
+    <!-- tools\ — отдельные проекты проверки (compatcheck, harness7), в мод не входят -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);tools\**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(NetRuntimeDir)\System.*.dll;$(NetRuntimeDir)\System.dll;$(NetRuntimeDir)\Microsoft.CSharp.dll;$(NetRuntimeDir)\netstandard.dll;$(NetRuntimeDir)\mscorlib.dll" Exclude="$(NetRuntimeDir)\System.Private.*.dll;$(NetRuntimeDir)\System.IO.Compression.Native.dll" Private="false" />
+    <Reference Include="$(NetRuntimeDir)\System.Private.CoreLib.dll" Private="false" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI"><HintPath>$(GameDir)\VintagestoryAPI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="VSSurvivalMod"><HintPath>$(GameDir)\Mods\VSSurvivalMod.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="cairo-sharp"><HintPath>$(GameDir)\Lib\cairo-sharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(GameDir)\Lib\Newtonsoft.Json.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GameDir)\Lib\0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>
