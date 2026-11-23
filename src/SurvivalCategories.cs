@@ -17,6 +17,9 @@ public class ModConfigFile
 
 	public bool displayModsAsCategories { get; set; } = true;
 
+	/// <summary>Закладки: кнопка «В закладки» на странице и вкладка «Закладки». Применяется после перезапуска игры.</summary>
+	public bool bookmarks { get; set; } = true;
+
 	/// <summary>Всплывающее окно с началом страницы при наведении на строку списка справочника.</summary>
 	public bool hoverPreview { get; set; } = true;
 

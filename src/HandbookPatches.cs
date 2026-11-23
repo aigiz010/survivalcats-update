@@ -37,7 +37,7 @@ internal class PatcherLoadEntries
 
 	public static void Postfix(GuiDialogHandbook __instance, List<string> ___categoryCodes)
 	{
-		if (Bookmarks.IsSupported(__instance) && !___categoryCodes.Contains(Bookmarks.CategoryCode))
+		if (Bookmarks.Enabled && Bookmarks.IsSupported(__instance) && !___categoryCodes.Contains(Bookmarks.CategoryCode))
 		{
 			___categoryCodes.Add(Bookmarks.CategoryCode);
 		}
@@ -66,6 +66,13 @@ internal static class PatcherinitDetailGui
 {
 	private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
 	{
+		// Закладки выключены в конфиге — кнопки нет, «Обзор» остаётся по центру, как в игре.
+		if (!Bookmarks.Enabled)
+		{
+			Status = "initDetailGui: закладки выключены в конфиге";
+			return instructions;
+		}
+
 		MethodInfo fixedUnder = AccessTools.Method(typeof(ElementBounds), nameof(ElementBounds.FixedUnder));
 		MethodInfo withAlignmentOffset = AccessTools.Method(typeof(ElementBounds), nameof(ElementBounds.WithFixedAlignmentOffset));
 		MethodInfo addSmallButton = AccessTools.Method(typeof(Vintagestory.API.Client.GuiComposerHelpers), nameof(Vintagestory.API.Client.GuiComposerHelpers.AddSmallButton), new Type[6]

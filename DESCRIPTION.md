@@ -27,6 +27,7 @@ Original mod: https://mods.vintagestory.at/show/mod/67 — all credit for the id
 | `addModNameToInfo` | `true` | mod name in item tooltips |
 | `displayVanillaTabsAsCategories` | `true` | vanilla creative tabs in the handbook |
 | `displayModsAsCategories` | `true` | creative tabs added by mods |
+| `bookmarks` | `true` | bookmarks: the Bookmark button and the Bookmarks tab (restart the game after changing) |
 | `hoverPreview` | `true` | page preview on hover |
 | `hoverPreviewDelayMs` | `250` | delay before the preview appears, ms |
 | `hoverPreviewHeightLimit` | `0` | max preview height; `0` = screen height |
@@ -68,6 +69,7 @@ Client-side mod.
 | `addModNameToInfo` | `true` | название мода в подсказке предмета |
 | `displayVanillaTabsAsCategories` | `true` | ванильные вкладки творческого в справочнике |
 | `displayModsAsCategories` | `true` | вкладки творческого, добавленные модами |
+| `bookmarks` | `true` | закладки: кнопка «В закладки» и вкладка «Закладки» (после изменения перезапустить игру) |
 | `hoverPreview` | `true` | предпросмотр страницы при наведении |
 | `hoverPreviewDelayMs` | `250` | задержка перед показом окна, мс |
 | `hoverPreviewHeightLimit` | `0` | предел высоты окна; `0` — по высоте экрана |

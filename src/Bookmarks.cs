@@ -65,6 +65,9 @@ internal static class Bookmarks
 
 	public static bool IsSupported(GuiDialogHandbook dlg) => Compat.IsSurvivalHandbook(dlg);
 
+	/// <summary>Закладки включены в конфиге (bookmarks). IsSupported — общая проверка окна для всех частей мода.</summary>
+	public static bool Enabled => ModConfigFile.Current?.bookmarks != false;
+
 	/// <summary>
 	/// Копии-закладки — после фоновой загрузки страниц, задачей на основном потоке: список страниц читает
 	/// и меняет основной поток (фильтр, Handbook Optimizer дописывает страницы блюд), так гонки нет.
@@ -72,7 +75,7 @@ internal static class Bookmarks
 	/// </summary>
 	public static void AddPagesAfterLoad(GuiDialogHandbook dlg)
 	{
-		if (!IsSupported(dlg)) return;
+		if (!Enabled || !IsSupported(dlg)) return;
 		List<string> codes = Load();
 		if (codes.Count == 0) return;
 
@@ -111,7 +114,7 @@ internal static class Bookmarks
 	/// <summary>Кнопка «В закладки» рядом с «Назад» в окне страницы справочника.</summary>
 	public static GuiComposer AddButton(GuiComposer composer, GuiDialogHandbook dlg)
 	{
-		if (!IsSupported(dlg) || Path.Length == 0) return composer;
+		if (!Enabled || !IsSupported(dlg) || Path.Length == 0) return composer;
 
 		Stack<BrowseHistoryElement> history = browseHistoryRef(dlg);
 		GuiHandbookPage page = history.Count > 0 ? history.Peek().Page : null;

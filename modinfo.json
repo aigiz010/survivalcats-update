@@ -6,7 +6,7 @@
     "ZigTheHedge"
   ],
   "description": "Creative inventory tabs, page preview and bookmarks in the survival handbook.\nВкладки творческого инвентаря, предпросмотр страниц и закладки в справочнике выживания.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "dependencies": {
     "game": "1.18.8"
   }

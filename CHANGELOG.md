@@ -1,5 +1,13 @@
 # Survival Categories Update — changelog
 
+## 1.1.2
+
+### English
+- New setting `bookmarks` in `ModConfig/SurvivalCatsConfig.json` (default `true`). Set it to `false` to remove both the Bookmark button on handbook pages and the Bookmarks tab; the Overview button then stays in the centre, as in the base game. Restart the game after changing it. Saved bookmarks are kept and come back when the setting is turned on again.
+
+### Русский
+- Новый параметр `bookmarks` в `ModConfig/SurvivalCatsConfig.json` (по умолчанию `true`). При `false` убираются и кнопка «В закладки» на страницах справочника, и вкладка «Закладки»; кнопка «Обзор» тогда остаётся по центру, как в игре без мода. После изменения нужно перезапустить игру. Сохранённые закладки не удаляются и вернутся, если параметр снова включить.
+
 ## 1.1.1
 
 ### English
